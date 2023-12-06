@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CADASTRO</title>
+    <link rel="stylesheet" href="cadastro.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu {
+            background-color: #8956;
+            overflow: hidden;
+            height: 30px;
+        }
+
+        .menu a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .menu a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .form-container {
+            margin: 20px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 20px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .form-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="menu">
+        <a href="principal.html">INÍCIO</a>
+        <a href="pagform.html">LOGIN</a>
+        <a href="cadastro.html">CADASTRO</a>
+    </div>
+
+    <div class="form-container">
+        <form onsubmit="adicionarItem(); return false;">
+            <label for="nomecomp">Nome Completo:</label>
+            <input type="text" id="nomecomp" name="nomecomp" class="form-input" required>
+
+            <label for="datanascimento">Data de Nascimento:</label>
+            <input type="date" id="datanascimento" name="datanascimento" class="form-input" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" class="form-input" required>
+
+            <input type="submit" value="Enviar" class="form-button">
+            <button type="button" class="form-button" onclick="window.location.href='principal.html'">Voltar</button>
+        </form>
+    </div>
+
+    <script>
+        function adicionarItem() {
+            var novoItem = {
+                nome: document.getElementById('nomecomp').value,
+                dataNascimento: document.getElementById('datanascimento').value,
+                email: document.getElementById('email').value,
+                senha: document.getElementById('senha').value
+            };
+
+            var itensArmazenados = JSON.parse(localStorage.getItem('itens')) || [];
+            itensArmazenados.push(novoItem);
+            localStorage.setItem('itens', JSON.stringify(itensArmazenados));
+
+            // Limpar os campos de entrada
+            document.getElementById('nomecomp').value = '';
+            document.getElementById('datanascimento').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('senha').value = '';
+
+            // Redirecionar para a tela de sucesso
+            window.location.href = 'sucesso.html'; // Substitua 'sucesso.html' pelo nome da sua tela de sucesso
+        }
+    </script>
+    </body>
+</html>
+<html>

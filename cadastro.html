@@ -102,14 +102,13 @@
             itensArmazenados.push(novoItem);
             localStorage.setItem('itens', JSON.stringify(itensArmazenados));
 
-            // Limpar os campos de entrada
             document.getElementById('nomecomp').value = '';
             document.getElementById('datanascimento').value = '';
             document.getElementById('email').value = '';
             document.getElementById('senha').value = '';
 
-            // Redirecionar para a tela de sucesso
-            window.location.href = 'sucesso.html'; // Substitua 'sucesso.html' pelo nome da sua tela de sucesso
+        
+            window.location.href = 'sucesso.html'; 
         }
     </script>
     </body>
